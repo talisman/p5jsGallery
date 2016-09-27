@@ -27,24 +27,28 @@ function getCaptureColors(){
   var b = 0;
 
   var tbr = 0;
+  var db = 0;
   capture.loadPixels();
   for (var x = 0 ; x < capture.pixels.length ; x = x +4 ){
     r += capture.pixels[x];
     g += capture.pixels[x+1];
     b += capture.pixels[x+2];
     tbr += capture.pixels[x] + capture.pixels[1]+capture.pixels[2];
+    db = db + 3 ;
   }
   capture.loadPixels();
 
-  var plen = capture.pixels.length;
-  var pla = floor(plen / 3);
-  tbr = tbr / capture.pixels.length * 0.75 ;
-  console.log(tbr);
+//  var plen = capture.pixels.length;
+//  var pla = floor(plen / 3);
+  tbr = tbr / db ;
+  //console.log(tbr);
   //tbr = tbr / 3;
   br = map ( tbr , 200, 50 , 0 , height);
-  rv = floor(r / pla);
-  gv = floor(g / pla);
-  bv = floor(b / pla);
+  rv = map (floor(r / (db /3 )),0,255,20,400);
+  gv = map (floor(g / (db /3 )),0,255,20,400);
+  bv = map (floor(b / (db /3 )),0,255,20,400);
+  //gv = floor(g / (db /3 ));
+  //bv = floor(b / (db /3));
 
 }
 
@@ -80,9 +84,9 @@ function draw() {
   }
   //getCaptureColors();
   fill(255,0,0,100);
-  ellipse(width /6 , br ,rv , rv );
+  ellipse(width /6 , height/2  ,rv , rv );
   fill(0,255,0,100);
-  ellipse((width /6)*3 , br  ,gv  , gv );
+  ellipse((width /6)*3 , height/2  ,gv  , gv );
   fill(0,0,255,100);
-  ellipse((width /6)*5 , br ,bv  , bv );
+  ellipse((width /6)*5 ,height/2  ,bv  , bv );
 }
