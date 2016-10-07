@@ -9,12 +9,12 @@ var bv;
 var br;
 
 function setup() {
-  frameRate(2);
+  //frameRate(2);
   SketchCanvas  = createCanvas(200,200);
   colorMode(RGB,255,255,255,255);
   background(255,200,255);
-  xtiles = 6;
-  ytiles = 6;
+  xtiles = 12;
+  ytiles = 8;
   capture = createCapture(VIDEO,captureBegan);
   capture.hide();
 }
@@ -42,7 +42,7 @@ function draw() {
       idx++;
     }
   }
-  //console.log(indexArray[0].x,indexArray[1].y);
+  //console.log(indexArray[0].x,indexArray[0].y);
 
 
   if(captureOn){
@@ -50,20 +50,28 @@ function draw() {
     var w = capture.width;
     var h = capture.height;
     SketchCanvas.resize(w,h);
+    console.log('resized');
+    console.log(indexArray);
     }
   }
 
   for (var i = 0 ; i < xtiles ; i++){
     for(var j = 0 ; j < ytiles ; j++){
       if(captureOn){
-        var v = floor(random(indexArray.length));
+        var r = random();
+        if (r < 0.025 ){
+          var v = floor(random(indexArray.length));
+        }
+        else {
+          var v = 0;
+        }
         var sx = indexArray[v].x;
         var sy = indexArray[v].y;
         indexArray.splice(v, 1);
         image(capture,sx,sy,x,y,i*x,j*y,x,y);
         stroke(255,255,255);
         strokeWeight(1);
-        rect(i*x,j*y,x,y);
+    //    rect(i*x,j*y,x,y);
       }
     }
   }
