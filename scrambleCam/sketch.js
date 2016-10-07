@@ -9,7 +9,7 @@ var bv;
 var br;
 
 function setup() {
-  //frameRate(2);
+  frameRate(4);
   SketchCanvas  = createCanvas(200,200);
   colorMode(RGB,255,255,255,255);
   background(255,200,255);
