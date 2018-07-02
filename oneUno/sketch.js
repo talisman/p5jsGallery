@@ -15,7 +15,7 @@ function draw() {
 	amp = map(d,0,240,2,20);
 	vs = random(100-amp,100+amp);
 	
-	fill(amp*12,(255- amp*12),amp*12,255);
+	fill(amp*12,(255- amp*12),150,255);
 	
 	ellipse(width/2,height/2,vs,vs);
   
