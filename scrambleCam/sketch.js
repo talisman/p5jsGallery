@@ -13,8 +13,8 @@ function setup() {
   SketchCanvas  = createCanvas(200,200);
   colorMode(RGB,255,255,255,255);
   background(255,200,255);
-  xtiles = 12;
-  ytiles = 8;
+  xtiles = 18;
+  ytiles = 12;
   capture = createCapture(VIDEO,captureBegan);
   capture.hide();
 }
